@@ -20,5 +20,4 @@ How to Play:
 3. Continue guessing until you find the correct number or exhaust your attempts.
 4. If you guess correctly, celebrate your victory and try to beat your high score!
 5. Click the "Play Again" button to reset the game and start a new round.
-6. 
 This project is a fun and educational example of JavaScript DOM manipulation and basic game development concepts. Feel free to fork, contribute, or customize it to your preferences!
