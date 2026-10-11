@@ -3,17 +3,23 @@
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
+let gameOver = false;
 
 const displayMessage = function (message) {
   document.querySelector(".message").textContent = message;
 };
 
 document.querySelector(".check").addEventListener("click", function () {
+  if (gameOver) return;
+
   const guess = Number(document.querySelector(".guess").value);
 
   if (!guess) {
     displayMessage("⛔️ No number!");
+  } else if (!Number.isInteger(guess) || guess < 1 || guess > 20) {
+    displayMessage("⛔️ Pick a whole number between 1 and 20!");
   } else if (guess === secretNumber) {
+    gameOver = true;
     displayMessage("🎉 Correct Number!");
     document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.background = "#60b347";
@@ -39,6 +45,7 @@ document.querySelector(".check").addEventListener("click", function () {
       score--;
       document.querySelector(".score").textContent = score;
     } else {
+      gameOver = true;
       displayMessage("💥 You lost the game!");
       document.querySelector(".score").textContent = 0;
     }
@@ -47,6 +54,7 @@ document.querySelector(".check").addEventListener("click", function () {
 
 document.querySelector(".again").addEventListener("click", function () {
   score = 20;
+  gameOver = false;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
   displayMessage("Start guessing...");
   document.querySelector(".score").textContent = score;
